@@ -1,14 +1,11 @@
-# PrestaShop Webservice Module
+# PSMod
 NodeJS routine that generates a webservice-based PrestaShop module,
 oriented to develop new backoffice functionalities.
 
-# Install
-```npm install -s presta-wsmod```
-
 # Usage
 ```js
-var wsmod = require('presta-wsmod');
-wsmod({
+var psmod = require('psmod');
+psmod({
     dir: 'modules',
     name: 'mymodule',
     className: 'MyModule',
@@ -19,9 +16,9 @@ wsmod({
     author: 'John Doe',
     email: 'john@email.com',
     copyright: '2020 John Doe',
-    ext_css: '',
-    ext_js: '',
-    ext_ws: '',
+    ext_css: '', // External CSS file
+    ext_js: '',  // External JS file
+    ext_ws: '',  // External Webservice
     update_interval: 86400
 });
 ```
