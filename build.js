@@ -1,6 +1,6 @@
 var psmod = require('./index');
 psmod({
-    dir: 'modules',
+    dir: 'module',
     name: 'mymodule',
     className: 'MyModule',
     displayName: 'My Module',
