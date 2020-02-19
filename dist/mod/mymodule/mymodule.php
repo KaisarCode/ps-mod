@@ -27,8 +27,8 @@
 class MyModule extends Module
 {
     private $ext_ws = '';
-    private $ext_js = '';
-    private $ext_css = '';
+    private $ext_js = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/js/script.js';
+    private $ext_css = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/css/style.css';
     
     // Initial API Permissions
     private $permissions = array(

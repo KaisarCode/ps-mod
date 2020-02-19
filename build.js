@@ -16,8 +16,8 @@ function buildMOD() {
         author: 'John Doe',
         email: 'john@email.com',
         copyright: '2020 John Doe',
-        ext_css: '', // External CSS file
-        ext_js: '',  // External JS file
+        ext_css: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/css/style.css',
+        ext_js: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/js/script.js',
         ext_ws: ''  // External Webservice
     });
     console.log('MOD compiled. Waiting for changes...');
