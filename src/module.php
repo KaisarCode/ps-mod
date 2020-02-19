@@ -238,7 +238,7 @@ class {{CLASSNAME}} extends Module
     // PING SERVICE ASYNC
     private function ping($mth, $url, $data)
     {
-        $mth = strtoupper($mth);
+        $mth = Tools::strtoupper($mth);
         if (!isset($data) || !$data) {
             $data = new stdClass();
         }
