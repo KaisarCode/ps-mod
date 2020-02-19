@@ -34,7 +34,7 @@ module.exports = function(opt) {
     if (!isset(opt.email)) opt.email = 'author@email.com';
     if (!isset(opt.copyright)) opt.copyright = yr+' '+opt.author;
     
-    if (!isset(opt.dir)) opt.dir = 'module';
+    if (!isset(opt.dir)) opt.dir = 'dist/mod';
     if (!isset(opt.ext_css)) opt.ext_css = '';
     if (!isset(opt.ext_js)) opt.ext_js = '';
     

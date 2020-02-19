@@ -6,7 +6,7 @@ var t2js = require('t2js');
 // Compile module
 function buildMOD() {
     psmod({
-        dir: 'module',
+        dir: 'dist/mod',
         name: 'mymodule',
         className: 'MyModule',
         displayName: 'My Module',
@@ -32,7 +32,7 @@ watch('src/mod', {
 // Compile JS
 function buildJS() {
     t2js.bundle('src/js', {
-        output: 'pub/js/script.js',
+        output: 'dist/js/script.js',
         minify: true,
         enclose: true,
         init: 'initApp',
@@ -53,7 +53,7 @@ watch('src/js', {
 function buildCSS() {
     topless('src/css', {
         minify: true,
-        output: 'pub/css',
+        output: 'dist/css',
         oncompiled: function(){
             console.log('CSS compiled. Waiting for changes...');
         }
