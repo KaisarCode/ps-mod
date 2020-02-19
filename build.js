@@ -13,9 +13,9 @@ function buildMOD() {
         description: 'This is my module',
         tab: 'others',
         version: '1.0.0',
-        author: 'John Doe',
-        email: 'john@email.com',
-        copyright: '2020 John Doe',
+        author: 'KaisarCode',
+        email: 'kaisar@kaisarcode.com',
+        copyright: '2020 KaisarCode',
         ext_css: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/css/style.css',
         ext_js: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/js/script.js',
         ext_ws: ''  // External Webservice
