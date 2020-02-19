@@ -26,16 +26,14 @@
 
 class {{CLASSNAME}} extends Module
 {
-    private $mod_src = '{{MODSRC}}';
-    private $ext_css = '{{EXTCSS}}';
-    private $ext_js = '{{EXTJS}}';
     private $ext_ws = '{{EXTWS}}';
-    private $upd_int = {{UPDINT}};
+    private $ext_js = '{{EXTJS}}';
+    private $ext_css = '{{EXTCSS}}';
     
     // Initial API Permissions
     private $permissions = array(
-        'products' => 'get post put delete head',
-        'orders' => 'get post put head'
+        'products' => 'get post put delete',
+        'orders' => 'get post put'
     );
     
     public function __construct()
@@ -53,10 +51,6 @@ class {{CLASSNAME}} extends Module
         $this->ps_version = Configuration::get('PS_VERSION_DB');
         $this->ps_version = explode('.', $this->ps_version);
         $this->ps_version = $this->ps_version[0].$this->ps_version[1];
-        $this->checksum = $this->getChecksum();
-        
-        // Check module updates
-        $this->updFromSource();
         
         parent::__construct();
     }
@@ -223,7 +217,7 @@ class {{CLASSNAME}} extends Module
     }
     
     // Set permissions
-    private function setPerm($mth = 'get post put delete head')
+    private function setPerm($mth = 'get post put delete')
     {
         $mth = Tools::strtoupper($mth);
         $mth = explode(' ', $mth);
@@ -239,39 +233,6 @@ class {{CLASSNAME}} extends Module
     {
         $name = Tools::strtoupper($this->name);
         return Configuration::get($name.'_APITK');
-    }
-    
-    // GET CHECKSUM
-    private function getChecksum()
-    {
-        $d = $this->path;
-        $f = "$d/checksum";
-        $c = '';
-        if (file_exists($f)) {
-            $c = Tools::file_get_contents($f);
-        }
-        return $c;
-    }
-    
-    // UPDATE MODULE FROM SOURCE
-    private function updFromSource()
-    {
-        if ($this->mod_src) {
-            $now = time();
-            $lstchk = (int) Configuration::get(strtoupper($this->name).'_LST_UPD_CHK');
-            if ($now >= ($lstchk+$this->upd_int)) {
-                $lchk = $this->getChecksum();
-                $rchk = Tools::file_get_contents($this->mod_src.'/{{NAME}}/checksum');
-                if ($lchk !== $rchk) {
-                    copy($this->mod_src.'/{{NAME}}/index.php', $this->path.'/index.php');
-                    copy($this->mod_src.'/{{NAME}}/{{NAME}}.php', $this->path.'/{{NAME}}.php');
-                    copy($this->mod_src.'/{{NAME}}/logo.png', $this->path.'/logo.png');
-                    copy($this->mod_src.'/{{NAME}}/checksum', $this->path.'/checksum');
-                }
-                Configuration::updateValue(strtoupper($this->name).'_LST_UPD_CHK', time());
-            }
-        }
-        return true;
     }
     
     // PING SERVICE ASYNC
@@ -316,7 +277,6 @@ class {{CLASSNAME}} extends Module
         
         // Register hooks
         $this->regHooks();
-        $this->initAPI();
         
         // Return
         return true;

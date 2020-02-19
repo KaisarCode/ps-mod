@@ -12,6 +12,5 @@ psmod({
     copyright: '2020 John Doe',
     ext_css: '', // External CSS file
     ext_js: '',  // External JS file
-    ext_ws: '',  // External Webservice
-    update_interval: 86400
+    ext_ws: ''  // External Webservice
 });

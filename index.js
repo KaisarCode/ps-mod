@@ -34,11 +34,9 @@ module.exports = function(opt) {
     if (!isset(opt.email)) opt.email = 'author@email.com';
     if (!isset(opt.copyright)) opt.copyright = yr+' '+opt.author;
     
-    if (!isset(opt.dir)) opt.dir = 'modules';
-    if (!isset(opt.source)) opt.source = './';
+    if (!isset(opt.dir)) opt.dir = 'module';
     if (!isset(opt.ext_css)) opt.ext_css = '';
     if (!isset(opt.ext_js)) opt.ext_js = '';
-    if (!isset(opt.update_interval)) opt.update_interval = 86400;
     
     // Replace template tags
     function replTags(str = '') {
@@ -51,11 +49,9 @@ module.exports = function(opt) {
         str = str.replace(/{{AUTHOR}}/gi, opt.author);
         str = str.replace(/{{EMAIL}}/gi, opt.email);
         str = str.replace(/{{COPYRIGHT}}/gi, opt.copyright);
-        str = str.replace(/{{MODSRC}}/gi, opt.source);
         str = str.replace(/{{EXTCSS}}/gi, opt.ext_css);
         str = str.replace(/{{EXTJS}}/gi, opt.ext_js);
         str = str.replace(/{{EXTWS}}/gi, opt.ext_ws);
-        str = str.replace(/{{UPDINT}}/gi, opt.update_interval);
         return str;
     }
     
