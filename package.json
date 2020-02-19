@@ -1,0 +1,16 @@
+{
+  "name": "psmod",
+  "version": "1.0.7",
+  "description": "Prestashop module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaisarCode/PSMod.git"
+  },
+  "author": "KaisarCode",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "folder-zip-sync": "^1.0.5",
+    "fs-extra": "^8.1.0",
+    "uniqid": "^5.2.0"
+  }
+}
