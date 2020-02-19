@@ -63,18 +63,18 @@ module.exports = function(opt) {
     if (!filex(dir)) mkdir(dir);
     
     // Install index.php
-    var idx = read(__dirname+'/src/index.php');
+    var idx = read(__dirname+'/src/mod/index.php');
     idx = replTags(idx);
     write(dir+'/index.php', idx);
     
     // Install module.php
-    var mod = read(__dirname+'/src/module.php');
+    var mod = read(__dirname+'/src/mod/module.php');
     mod = replTags(mod);
     write(dir+'/'+opt.name+'.php', mod);
     
     // Install logo
     if (!filex(dir+'/logo.png')) {
-        fs.copySync(__dirname+'/src/logo.png', dir+'/logo.png');
+        fs.copySync(__dirname+'/src/mod/logo.png', dir+'/logo.png');
     }
     
     // Zip module
