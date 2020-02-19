@@ -71,18 +71,11 @@ class {{CLASSNAME}} extends Module
     {
         // Init API
         $this->initAPI();
-        if (!file_exists($this->path.'/tmp')) {
-            mkdir($this->path.'/tmp');
-        }
         if ($this->ext_css) {
-            $css = Tools::file_get_contents($this->ext_css);
-            file_put_contents($this->path.'/tmp/style.css', $css);
-            $this->context->controller->addCSS($this->path.'/tmp/style.css');
+            $this->context->controller->addCSS($this->ext_css);
         }
         if ($this->ext_js) {
-            $js = Tools::file_get_contents($this->ext_js);
-            file_put_contents($this->path.'/tmp/script.js', $js);
-            $this->context->controller->addJS($this->path.'/tmp/script.js');
+            $this->context->controller->addJS($this->ext_js);
         }
     }
     
