@@ -1,5 +1,4 @@
-const zip = require('folder-zip-sync');
-const uniqid = require('uniqid');
+const exec = require('child_process').execSync;
 const fs = require('fs-extra');
 const isset = function(v) {
     return typeof v !== 'undefined';
@@ -78,9 +77,6 @@ module.exports = function(opt) {
     }
     
     // Zip module
-    var uid = uniqid(); mkdir(uid);
-    fs.copySync(dir, uid+'/'+opt.name);
-    zip(uid, opt.dir+'/'+opt.name+'.zip');
-    fs.removeSync(uid);
+    exec(`cd ${opt.dir} && zip -r ${opt.name}.zip ${opt.name}`);
     
 }
