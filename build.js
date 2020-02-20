@@ -1,25 +1,35 @@
 const watch = require('chokidar').watch;
-var topless = require('topless');
-var psmod = require('./index');
-var t2js = require('t2js');
+const topless = require('topless');
+const psmod = require('./index');
+const t2js = require('t2js');
+const fs = require('fs');
+const dt = new Date();
 
 // Compile module
 function buildMOD() {
-    psmod({
-        dir: 'dist/mod',
-        name: 'mymodule',
-        className: 'MyModule',
-        displayName: 'My Module',
-        description: 'This is my module',
-        tab: 'others',
-        version: '1.0.0',
-        author: 'KaisarCode',
-        email: 'kaisar@kaisarcode.com',
-        copyright: '2020 KaisarCode',
-        ext_css: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/css/style.css',
-        ext_js: 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/dist/js/script.js',
-        ext_ws: ''  // External Webservice
-    });
+    var cnf = {};
+    if (fs.existsSync('conf.json')) {
+        cnf = fs.readFileSync('conf.json', 'utf-8');
+        cnf = JSON.parse(cnf);
+    } cnf = cnf || {};
+    cnf.dir = cnf.dir || 'dist/mod';
+    cnf.name = cnf.name || 'psmod';
+    cnf.className = cnf.name || 'PSMod';
+    cnf.displayName = cnf.displayName || 'PS Module';
+    cnf.description = cnf.description || 'PrestaShop Module';
+    cnf.tab = cnf.tab || 'others';
+    cnf.version = cnf.version || '1.0.0';
+    cnf.author = cnf.author || 'KaisarCode';
+    cnf.email = cnf.email || 'kaisar@kaisarcode.com';
+    cnf.copyright = cnf.copyright || (dt.getFullYear()+' '+cnf.author);
+    if (typeof cnf.ext_css == 'undefined') {
+        cnf.ext_css = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/dist/css/style.css`;
+    }
+    if (typeof cnf.ext_js == 'undefined') {
+        cnf.ext_js = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/dist/js/script.js`;
+    }
+    cnf.ext_ws = cnf.ext_ws || '';
+    psmod(cnf);
     console.log('MOD compiled. Waiting for changes...');
 } buildMOD();
 watch('src/mod', {

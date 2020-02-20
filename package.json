@@ -1,9 +1,4 @@
 {
-  "name": "psmod",
-  "version": "1.0.7",
-  "description": "Prestashop module",
-  "author": "KaisarCode",
-  "license": "UNLICENSED",
   "dependencies": {
     "bpx": "^2.2.13",
     "chokidar": "^3.3.1",
