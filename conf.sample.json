@@ -1,0 +1,15 @@
+{
+    "dir": "dist/mod",
+    "name": "psmod",
+    "className": "PSMod",
+    "displayName": "PS Mod",
+    "description": "PrestaShop module",
+    "tab": "others",
+    "version": "1.0.0",
+    "author": "KaisarCode",
+    "email": "kaisar@kaisarcode.com",
+    "copyright": "2020 KaisarCode",
+    "ext_css": "",
+    "ext_js": "",
+    "ext_ws": ""
+}
