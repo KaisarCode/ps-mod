@@ -1,18 +1,31 @@
-const watch = require('chokidar').watch;
-const topless = require('topless');
-const psmod = require('./index');
-const t2js = require('t2js');
+const psmod = require('./src/mod');
+const dwalk = require('./lib/dwalk');
+const fread = require('./lib/fread');
+const fwrite = require('./lib/fwrite');
 const fs = require('fs');
 const dt = new Date();
+
+var dist = 'app';
+var modd = dist+'/mod';
+var cssd = dist+'/css';
+var jsdr = dist+'/js';
+var styl = cssd+'/style.css';
+var scrp = jsdr+'/script.js';
+if (!fs.existsSync(dist)) fs.mkdirSync(dist);
+if (!fs.existsSync(modd)) fs.mkdirSync(modd);
+if (!fs.existsSync(cssd)) fs.mkdirSync(cssd);
+if (!fs.existsSync(jsdr)) fs.mkdirSync(jsdr);
+if (!fs.existsSync(styl)) fwrite(styl, '');
+if (!fs.existsSync(scrp)) fwrite(scrp, '');
 
 // Compile module
 function buildMOD() {
     var cnf = {};
     if (fs.existsSync('conf.json')) {
-        cnf = fs.readFileSync('conf.json', 'utf-8');
+        cnf = fread('conf.json');
         cnf = JSON.parse(cnf);
     } cnf = cnf || {};
-    cnf.dir = cnf.dir || 'dist/mod';
+    cnf.dir = cnf.dir || modd;
     cnf.name = cnf.name || 'psmod';
     cnf.className = cnf.name || 'PSMod';
     cnf.displayName = cnf.displayName || 'PS Module';
@@ -23,55 +36,53 @@ function buildMOD() {
     cnf.email = cnf.email || 'kaisar@kaisarcode.com';
     cnf.copyright = cnf.copyright || (dt.getFullYear()+' '+cnf.author);
     if (typeof cnf.ext_css == 'undefined') {
-        cnf.ext_css = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/dist/css/style.css`;
+        cnf.ext_css = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/${dist}/css/style.css`;
     }
     if (typeof cnf.ext_js == 'undefined') {
-        cnf.ext_js = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/dist/js/script.js`;
+        cnf.ext_js = `https://cdn.jsdelivr.net/gh/${cnf.author}/${cnf.className}/${dist}/js/script.js`;
     }
-    cnf.ext_ws = cnf.ext_ws || '';
-    psmod(cnf);
-    console.log('MOD compiled. Waiting for changes...');
-} buildMOD();
-watch('src/mod', {
-  ignored: /\.gout.*/,
-  persistent: true
-})
-.on('change', buildMOD)
-.on('unlink', buildMOD);
-
-// Compile JS
-function buildJS() {
-    t2js.bundle('src/js', {
-        output: 'dist/js/script.js',
-        minify: true,
-        enclose: true,
-        init: 'initApp',
-        lib: ['node_modules/jpesos/j$.js'],
-        oncompiled: function(){
-            console.log('JS compiled. Waiting for changes...');
-        }
-    });
-} buildJS();
-watch('src/js', {
-  ignored: /\.gout.*/,
-  persistent: true
-})
-.on('change', buildJS)
-.on('unlink', buildJS);
+    cnf.ext_ws = cnf.ext_ws || ''; psmod(cnf);
+    console.log('MOD compiled.');
+}
 
 // Compile CSS
 function buildCSS() {
-    topless('src/css', {
-        minify: true,
-        output: 'dist/css',
-        oncompiled: function(){
-            console.log('CSS compiled. Waiting for changes...');
-        }
-    });
-} buildCSS();
-watch('src/css', {
-  ignored: /\.gout.*/,
-  persistent: true
-})
-.on('change', buildCSS)
-.on('unlink', buildCSS);
+    
+    console.log('CSS compiled.');
+}
+
+// Compile JS
+function buildJS() {
+    
+    console.log('JS compiled.');
+}
+
+// Build MOD
+var dir = 'src/mod';
+if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+var dirs = dwalk(dir);
+dirs.unshift(dir);
+dirs.forEach(function(d){
+fs.watch(d, function(e, f){
+if (!f.match(/^\..*/g)) buildMOD();
+}); }); buildMOD();
+
+// Build CSS
+var dir = 'src/css';
+if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+var dirs = dwalk(dir);
+dirs.unshift(dir);
+dirs.forEach(function(d){
+fs.watch(d, function(e, f){
+if (!f.match(/^\..*/g)) buildCSS();
+}); }); buildCSS();
+
+// Build JS
+var dir = 'src/js';
+if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+var dirs = dwalk(dir);
+dirs.unshift(dir);
+dirs.forEach(function(d){
+fs.watch(d, function(e, f){
+if (!f.match(/^\..*/g)) buildJS();
+}); }); buildJS();

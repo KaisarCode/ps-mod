@@ -1,17 +1,12 @@
-const exec = require('child_process').execSync;
-const fs = require('fs-extra');
-const isset = function(v) {
-    return typeof v !== 'undefined';
-}
-const mkdir = fs.mkdirpSync;
+const exec  = require('child_process').execSync;
+const fs = require('fs');
+const fread = require('../lib/fread');
+const fwrite = require('../lib/fwrite');
+const def = function(v) {
+return typeof v !== 'undefined'; }
+const mkdir = fs.mkdirSync;
 const filex = fs.existsSync;
-const read = function(f) {
-    return fs.readFileSync(f, 'utf-8');
-}
-const write = function(f, s = '') {
-    fs.writeFileSync(f, s, { mode: 0o755 });
-    return s;
-}
+const copy = fs.copyFileSync;
 
 module.exports = function(opt) {
     
@@ -19,23 +14,20 @@ module.exports = function(opt) {
     var yr = dt.getFullYear();
     
     // Options
-    if (!isset(opt)) opt = {};
+    if (!def(opt)) opt = {};
+    if (!def(opt.name)) opt.name = 'psmod';
+    if (!def(opt.className)) opt.className = 'PSMod';
+    if (!def(opt.displayName)) opt.displayName = opt.className;
+    if (!def(opt.description)) opt.description = 'PS Module';
+    if (!def(opt.tab)) opt.tab = 'others';
+    if (!def(opt.version)) opt.version = '1.0.0';
+    if (!def(opt.author)) opt.author = 'Author';
+    if (!def(opt.email)) opt.email = 'author@email.com';
+    if (!def(opt.copyright)) opt.copyright = yr+' '+opt.author;
     
-    if (!isset(opt.watch)) opt.watch = true;
-    
-    if (!isset(opt.name)) opt.name = 'psmod';
-    if (!isset(opt.className)) opt.className = 'PSMod';
-    if (!isset(opt.displayName)) opt.displayName = opt.className;
-    if (!isset(opt.description)) opt.description = 'PS Module';
-    if (!isset(opt.tab)) opt.tab = 'others';
-    if (!isset(opt.version)) opt.version = '1.0.0';
-    if (!isset(opt.author)) opt.author = 'Author';
-    if (!isset(opt.email)) opt.email = 'author@email.com';
-    if (!isset(opt.copyright)) opt.copyright = yr+' '+opt.author;
-    
-    if (!isset(opt.dir)) opt.dir = 'dist/mod';
-    if (!isset(opt.ext_css)) opt.ext_css = '';
-    if (!isset(opt.ext_js)) opt.ext_js = '';
+    if (!def(opt.dir)) opt.dir = 'dist/mod';
+    if (!def(opt.ext_css)) opt.ext_css = '';
+    if (!def(opt.ext_js)) opt.ext_js = '';
     
     // Replace template tags
     function replTags(str = '') {
@@ -62,18 +54,18 @@ module.exports = function(opt) {
     if (!filex(dir)) mkdir(dir);
     
     // Install index.php
-    var idx = read(__dirname+'/src/mod/index.php');
+    var idx = fread(__dirname+'/mod/index.php');
     idx = replTags(idx);
-    write(dir+'/index.php', idx);
+    fwrite(dir+'/index.php', idx);
     
     // Install module.php
-    var mod = read(__dirname+'/src/mod/module.php');
+    var mod = fread(__dirname+'/mod/module.php');
     mod = replTags(mod);
-    write(dir+'/'+opt.name+'.php', mod);
+    fwrite(dir+'/'+opt.name+'.php', mod);
     
     // Install logo
     if (!filex(dir+'/logo.png')) {
-        fs.copySync(__dirname+'/src/mod/logo.png', dir+'/logo.png');
+        copy(__dirname+'/mod/logo.png', dir+'/logo.png');
     }
     
     // Zip module

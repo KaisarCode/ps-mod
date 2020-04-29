@@ -1,5 +1,5 @@
 {
-    "dir": "dist/mod",
+    "dir": "app/mod",
     "name": "psmod",
     "className": "PSMod",
     "displayName": "PS Mod",
