@@ -39,8 +39,8 @@ class PSMod extends Module
     public function __construct()
     {
         $this->name = 'psmod';
-        $this->displayName = $this->l('PS Module');
-        $this->description = $this->l('PrestaShop Module');
+        $this->displayName = $this->l('PS Mod');
+        $this->description = $this->l('PrestaShop module');
         $this->tab = 'others';
         $this->version = '1.0.0';
         $this->author = 'KaisarCode';

@@ -71,4 +71,6 @@ module.exports = function(opt) {
     // Zip module
     exec(`cd ${opt.dir} && zip -r ${opt.name}.zip ${opt.name}`);
     
+    // Notify
+    console.log('MOD compiled.');
 }

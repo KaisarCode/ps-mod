@@ -1,7 +1,7 @@
 <?
-var CSSSTR = '';
+var css_str = '';
 function CSS(str) {
-    CSSSTR += str;
-    return CSSSTR;
+    css_str += str;
+    return css_str;
 };
 ?>
