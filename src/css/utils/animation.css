@@ -1,0 +1,84 @@
+<?
+var spd = 0.5;
+CSS(?>
+
+/*Easing*/
+.${x} .${x}-ease {
+    -webkit-transition: all ${spd}s cubic-bezier(0.25, 0.1, 0.25, 1);
+    transition: all ${spd}s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.${x} .${x}-ease-out-back {
+    -webkit-transition: all${spd}s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all ${spd}s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/*Spin*/
+@-webkit-keyframes ${x}spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes ${x}spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+.${x} .${x}-spin {
+    display: inline-block;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation: ${x}spin ${spd}s 1 linear;
+    animation: ${x}spin ${spd}s 1 linear;
+}
+.${x} .${x}-infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+}
+
+/*Speed*/
+.${x} .${x}-slow {
+    -webkit-transition-duration: ${(spd*2)}s;
+    transition-duration: ${(spd*2)}s;
+    -webkit-animation-duration: ${(spd*2)}s;
+    animation-duration: ${(spd*2)}s;
+}
+.${x} .${x}-fast {
+    -webkit-transition-duration: ${(spd/2)}s;
+    transition-duration: ${(spd/2)}s;
+    -webkit-animation-duration: ${(spd/2)}s;
+    animation-duration: ${(spd/2)}s;
+}
+.${x} .${x}-faster {
+    -webkit-transition-duration: ${(spd/4)}s;
+    transition-duration: ${(spd/4)}s;
+    -webkit-animation-duration: ${(spd/4)}s;
+    animation-duration: ${(spd/4)}s;
+}
+.${x} .${x}-fastest {
+    -webkit-transition-duration: ${(spd/6)}s;
+    transition-duration: ${(spd/6)}s;
+    -webkit-animation-duration: ${(spd/6)}s;
+    animation-duration: ${(spd/6)}s;
+}
+.${x} .${x}-instant {
+    -webkit-transition-duration: 0s;
+    transition-duration: 0s;
+    -webkit-animation-duration: 0s;
+    animation-duration: 0s;
+}
+
+<?);?>

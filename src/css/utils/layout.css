@@ -1,0 +1,62 @@
+<?CSS(?>
+
+/* Columns */
+.${x} .${x}-same-size {
+    table-layout: fixed;
+}
+
+.${x} .${x}-cols {
+    display: table;
+    width: 100%;
+}
+
+.${x} .${x}-col,
+.${x} .${x}-cols > * {
+    width: auto;
+    float: none;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.${x} .${x}-col0 { width: ${((100/12)*0)}% }
+.${x} .${x}-col1 { width: ${((100/12)*1)}%; }
+.${x} .${x}-col2 { width: ${((100/12)*2)}%; }
+.${x} .${x}-col3 { width: ${((100/12)*3)}%; }
+.${x} .${x}-col4 { width: ${((100/12)*4)}%; }
+.${x} .${x}-col5 { width: ${((100/12)*5)}%; }
+.${x} .${x}-col6 { width: ${((100/12)*6)}%; }
+.${x} .${x}-col7 { width: ${((100/12)*7)}%; }
+.${x} .${x}-col8 { width: ${((100/12)*8)}%; }
+.${x} .${x}-col9 { width: ${((100/12)*9)}%; }
+.${x} .${x}-col10 { width: ${((100/12)*10)}%; }
+.${x} .${x}-col11 { width: ${((100/12)*11)}%; }
+.${x} .${x}-col12 { width: ${((100/12)*12)}%; }
+
+
+/*Flex*/
+.${x} .${x}-flex-row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+}
+.${x} .${x}-flex-m {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+}
+
+<?);?>

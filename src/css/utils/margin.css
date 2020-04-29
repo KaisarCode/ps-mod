@@ -1,0 +1,59 @@
+<?CSS(?>
+
+.${x} .${x}-mar     { margin: 0.5em; }
+.${x} .${x}-mar-xl  { margin: 2em; }
+.${x} .${x}-mar-lg  { margin: 1.5em; }
+.${x} .${x}-mar-md  { margin: 1em; }
+.${x} .${x}-mar-sm  { margin: 0.5em; }
+.${x} .${x}-mar-xs  { margin: 0.25em; }
+.${x} .${x}-mar-no  { margin: 0em; }
+
+.${x} .${x}-mar-x     { margin-left: 0.5em;  margin-right: 0.5em;}
+.${x} .${x}-mar-x-xl  { margin-left: 2em; margin-right: 2em; }
+.${x} .${x}-mar-x-lg  { margin-left: 1.5em; margin-right: 1.5em; }
+.${x} .${x}-mar-x-md  { margin-left: 1em;   margin-right: 1em;   }
+.${x} .${x}-mar-x-sm  { margin-left: 0.5em; margin-right: 0.5em; }
+.${x} .${x}-mar-x-xs  { margin-left: 0.25em; margin-right: 0.25em; }
+.${x} .${x}-mar-x-no  { margin-left: 0em;   margin-right: 0em;   }
+
+.${x} .${x}-mar-y     { margin-top: 0.5em;  margin-bottom: 0.5em;}
+.${x} .${x}-mar-y-xl  { margin-top: 2em; margin-bottom: 2em; }
+.${x} .${x}-mar-y-lg  { margin-top: 1.5em; margin-bottom: 1.5em; }
+.${x} .${x}-mar-y-md  { margin-top: 1em;   margin-bottom: 1em;   }
+.${x} .${x}-mar-y-sm  { margin-top: 0.5em; margin-bottom: 0.5em; }
+.${x} .${x}-mar-y-xs  { margin-top: 0.25em; margin-bottom: 0.25em; }
+.${x} .${x}-mar-y-no  { margin-top: 0em;   margin-bottom: 0em;   }
+
+.${x} .${x}-mar-t     { margin-top: 0.5em; }
+.${x} .${x}-mar-t-xl  { margin-top: 2em; }
+.${x} .${x}-mar-t-lg  { margin-top: 1.5em; }
+.${x} .${x}-mar-t-md  { margin-top: 1em;   }
+.${x} .${x}-mar-t-sm  { margin-top: 0.5em; }
+.${x} .${x}-mar-t-xs  { margin-top: 0.25em; }
+.${x} .${x}-mar-t-no  { margin-top: 0em;   }
+
+.${x} .${x}-mar-r     { margin-right: 0.5em; }
+.${x} .${x}-mar-r-xl  { margin-right: 2em; }
+.${x} .${x}-mar-r-lg  { margin-right: 1.5em; }
+.${x} .${x}-mar-r-md  { margin-right: 1em;   }
+.${x} .${x}-mar-r-sm  { margin-right: 0.5em; }
+.${x} .${x}-mar-r-xs  { margin-right: 0.25em; }
+.${x} .${x}-mar-r-no  { margin-right: 0em;   }
+
+.${x} .${x}-mar-b     { margin-bottom: 0.5em; }
+.${x} .${x}-mar-b-xl  { margin-bottom: 2em; }
+.${x} .${x}-mar-b-lg  { margin-bottom: 1.5em; }
+.${x} .${x}-mar-b-md  { margin-bottom: 1em;   }
+.${x} .${x}-mar-b-sm  { margin-bottom: 0.5em; }
+.${x} .${x}-mar-b-xs  { margin-bottom: 0.25em; }
+.${x} .${x}-mar-b-no  { margin-bottom: 0em;   }
+
+.${x} .${x}-mar-l     { margin-left: 0.5em; }
+.${x} .${x}-mar-l-xl  { margin-left: 2em; }
+.${x} .${x}-mar-l-lg  { margin-left: 1.5em; }
+.${x} .${x}-mar-l-md  { margin-left: 1em;   }
+.${x} .${x}-mar-l-sm  { margin-left: 0.5em; }
+.${x} .${x}-mar-l-xs  { margin-left: 0.25em; }
+.${x} .${x}-mar-l-no  { margin-left: 0em;   }
+
+<?);?>
