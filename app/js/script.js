@@ -1,2 +1,2 @@
 /*PS Module - 2020 KaisarCode*/
-(function(){ var x = 'mod';console.log('Init APP'); })();
+(function(){ var x = 'psmod';console.log('Init APP'); })();

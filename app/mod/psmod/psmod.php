@@ -24,11 +24,11 @@
 *  International Registered Trademark & Property of PrestaShop SA
 */
 
-class psmod extends Module
+class PSMod extends Module
 {
     private $ext_ws = '';
-    private $ext_js = 'https://cdn.jsdelivr.net/gh/KaisarCode/psmod/app/js/script.js';
-    private $ext_css = 'https://cdn.jsdelivr.net/gh/KaisarCode/psmod/app/css/style.css';
+    private $ext_js = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/app/js/script.js';
+    private $ext_css = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod/app/css/style.css';
     
     // Initial API Permissions
     private $permissions = array(
@@ -83,7 +83,7 @@ class psmod extends Module
     public function getContent()
     {
         $this->regHooks();
-        return '<div class="psmod-conf"></div>';
+        return '<div class="psmod psmod-conf"></div>';
     }
     
     // UPDATE PRODUCT

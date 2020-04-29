@@ -1,4 +1,6 @@
+// Load dependencies
 const fs = require('fs');
+
 const psmod = require('./src/mod');
 const dwalk = require('./lib/dwalk');
 const fwalk = require('./lib/fwalk');
@@ -10,14 +12,13 @@ const rmcomm = require('./lib/rmcomm');
 const strmin = require('./lib/strmin');
 const strrepl = require('./lib/strrepl');
 
+// Paths
 var src_mod = 'src/mod';
 var src_css = 'src/css';
 var src_js = 'src/js';
 if (!fs.existsSync(src_mod)) fs.mkdirSync(src_mod);
 if (!fs.existsSync(src_css)) fs.mkdirSync(src_css);
 if (!fs.existsSync(src_js)) fs.mkdirSync(src_js);
-
-var pfx  = 'mod';
 var dist = 'app';
 var modd = dist+'/mod';
 var cssd = dist+'/css';
@@ -31,6 +32,7 @@ if (!fs.existsSync(jsdr)) fs.mkdirSync(jsdr);
 if (!fs.existsSync(styl)) fwrite(styl, '');
 if (!fs.existsSync(scrp)) fwrite(scrp, '');
 
+// Resolve configuration
 var cnf = {};
 var dt = new Date();
 function getConf() {
@@ -40,7 +42,7 @@ function getConf() {
     } cnf = cnf || {};
     cnf.dir = cnf.dir || modd;
     cnf.name = cnf.name || 'psmod';
-    cnf.className = cnf.name || 'PSMod';
+    cnf.className = cnf.className || 'PSMod';
     cnf.displayName = cnf.displayName || 'PS Module';
     cnf.description = cnf.description || 'PrestaShop Module';
     cnf.tab = cnf.tab || 'others';
@@ -67,7 +69,7 @@ function buildMOD() {
 function buildCSS() {
     var str = '';
     var files = fwalk(src_css);
-    str += `<? var x = '${pfx}'; ?>`;
+    str += `<? var x = '${cnf.name}'; ?>`;
     files.forEach(function(fl) {
     str += fread(fl); });
     str = rmcomm(str);
@@ -84,7 +86,7 @@ function buildCSS() {
 function buildJS() {
     var str = '';
     var files = fwalk(src_js);
-    str += `<? var x = '${pfx}'; ?>`;
+    str += `<? var x = '${cnf.name}'; ?>`;
     files.forEach(function(fl) {
     str += fread(fl); });
     str = rmcomm(str);
@@ -100,23 +102,32 @@ function buildJS() {
 // Build MOD
 var dirs = dwalk(src_mod);
 dirs.unshift(src_mod);
-dirs.forEach(function(d){
-fs.watch(d, function(e, f){
-if (!f.match(/^\..*/g)) buildMOD();
-}); }); buildMOD();
+dirs.forEach(function(d) {
+    fs.watch(d, function(e, f) {
+        if (!f.match(/^\..*/g)) {
+            buildMOD();
+        }
+    });
+}); buildMOD();
 
 // Build CSS
 var dirs = dwalk(src_css);
 dirs.unshift(src_css);
-dirs.forEach(function(d){
-fs.watch(d, function(e, f){
-if (!f.match(/^\..*/g)) buildCSS();
-}); }); buildCSS();
+dirs.forEach(function(d) {
+    fs.watch(d, function(e, f) {
+        if (!f.match(/^\..*/g)) {
+            buildCSS();
+        }
+    });
+}); buildCSS();
 
 // Build JS
 var dirs = dwalk(src_js);
 dirs.unshift(src_js);
-dirs.forEach(function(d){
-fs.watch(d, function(e, f){
-if (!f.match(/^\..*/g)) buildJS();
-}); }); buildJS();
+dirs.forEach(function(d) {
+    fs.watch(d, function(e, f) {
+        if (!f.match(/^\..*/g)) {
+            buildJS();
+        }
+    });
+}); buildJS();

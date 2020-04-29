@@ -83,7 +83,7 @@ class {{CLASSNAME}} extends Module
     public function getContent()
     {
         $this->regHooks();
-        return '<div class="{{NAME}}-conf"></div>';
+        return '<div class="{{NAME}} {{NAME}}-conf"></div>';
     }
     
     // UPDATE PRODUCT
