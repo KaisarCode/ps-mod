@@ -15,7 +15,11 @@ var fcopy   = fs.copyFileSync;
 var src = './src';
 var src_mod = src+'/mod';
 var src_css = src+'/css';
+var src_css_l = src_css+'/0-lib';
+var src_css_a = src_css+'/app';
 var src_js  = src+'/js';
+var src_js_l  = src_js+'/0-lib';
+var src_js_a  = src_js+'/app';
 
 var dist = './app';
 var modd = dist+'/mod';
@@ -37,9 +41,13 @@ var buildMOD = require(src+'/mod');
 // Build CSS
 var buildCSS = function(cfg) {
     var str = '';
-    var fls = fwalk(src_css);
     str += `<? var x = '${cfg.name}'; ?>`;
-    fls.forEach(function(fl) {
+    // Load libraries
+    fwalk(src_css_l).forEach(function(fl) {
+        str += '<? '+fread(fl)+' ?>';
+    });
+    // Load app files
+    fwalk(src_css_a).forEach(function(fl) {
         str += fread(fl);
     });
     str = rmcomm(str);
@@ -55,7 +63,6 @@ var buildCSS = function(cfg) {
 // Build JS
 function buildJS(cfg) {
     var str = '';
-    var files = fwalk(src_js);
     str += `<?
     var x = '${cfg.name}';
     var cfg = {
@@ -66,7 +73,12 @@ function buildJS(cfg) {
         email: '${cfg.email}'
     };
     ?>`;
-    files.forEach(function(fl) {
+    // Load libraries
+    fwalk(src_js_l).forEach(function(fl) {
+        str += '<? '+fread(fl)+' ?>';
+    });
+    // Load app files
+    fwalk(src_js_a).forEach(function(fl) {
         str += fread(fl);
     });
     str = rmcomm(str);
