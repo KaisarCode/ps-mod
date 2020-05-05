@@ -1,2 +1,2 @@
 /*PS Mod - 2020 KaisarCode*/
-(function(){ var x = 'psmod'; var cfg = { name: 'PS Mod', description: 'PrestaShop module', version: '1.0.0', author: 'KaisarCode', email: 'kaisar@kaisarcode.com' };console.log('Init PSMod'); })();
+(function(){ var x = 'psmod'; var cfg = { name: 'PS Mod', description: 'PrestaShop module', version: '1.0.0', author: 'KaisarCode', email: 'kaisar@kaisarcode.com' };console.log('Init PSMod'); console.log(cfg); })();
