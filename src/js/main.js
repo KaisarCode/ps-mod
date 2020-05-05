@@ -1,3 +1,3 @@
 <?
-console.log('Init APP');
+console.log('Init PSMod');
 ?>
