@@ -56,7 +56,16 @@ var buildCSS = function(cfg) {
 function buildJS(cfg) {
     var str = '';
     var files = fwalk(src_js);
-    str += `<? var x = '${cfg.name}'; ?>`;
+    str += `<?
+    var x = '${cfg.name}';
+    var cfg = {
+        name: '${cfg.displayName}',
+        description: '${cfg.description}',
+        version: '${cfg.version}',
+        author: '${cfg.author}',
+        email: '${cfg.email}'
+    };
+    ?>`;
     files.forEach(function(fl) {
         str += fread(fl);
     });
