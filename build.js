@@ -10,6 +10,7 @@ var strmin  = require('./lib/strmin');
 var strrepl = require('./lib/strrepl');
 var fexist  = fs.existsSync;
 var fcopy   = fs.copyFileSync;
+var dt = new Date();
 
 // Paths
 var src = './src';
@@ -25,12 +26,11 @@ var styl = cssd+'/style.css';
 var scrp = jsdr+'/script.js';
 
 // Load libs
-lib = fread('lib.json');
+var lib = fread('lib.json');
 lib = JSON.parse(lib);
 
 // Load config
-var dt = new Date();
-cfg = fread('mod.json');
+var cfg = fread('mod.json');
 cfg = JSON.parse(cfg);
 
 // Build MOD
@@ -39,7 +39,10 @@ var buildMOD = require(src+'/mod');
 // Build CSS
 var buildCSS = function(cfg) {
     var str = '';
-    str += `<? var x = '${cfg.name}'; ?>`;
+    str += `<?
+    var r = '${cfg.name}';
+    var x = '${cfg.name}-';
+    ?>`;
     fwalk(src_css).forEach(function(fl) {
         str += fread(fl);
     });

@@ -1,17 +1,17 @@
 <?CSS(?>
 
 /* Columns */
-.${x} .${x}-same-size {
+.${r} .${x}same-size {
     table-layout: fixed;
 }
 
-.${x} .${x}-cols {
+.${r} .${x}cols {
     display: table;
     width: 100%;
 }
 
-.${x} .${x}-col,
-.${x} .${x}-cols > * {
+.${r} .${x}col,
+.${r} .${x}cols > * {
     width: auto;
     float: none;
     height: 100%;
@@ -19,23 +19,23 @@
     vertical-align: middle;
 }
 
-.${x} .${x}-col0 { width: ${((100/12)*0)}% }
-.${x} .${x}-col1 { width: ${((100/12)*1)}%; }
-.${x} .${x}-col2 { width: ${((100/12)*2)}%; }
-.${x} .${x}-col3 { width: ${((100/12)*3)}%; }
-.${x} .${x}-col4 { width: ${((100/12)*4)}%; }
-.${x} .${x}-col5 { width: ${((100/12)*5)}%; }
-.${x} .${x}-col6 { width: ${((100/12)*6)}%; }
-.${x} .${x}-col7 { width: ${((100/12)*7)}%; }
-.${x} .${x}-col8 { width: ${((100/12)*8)}%; }
-.${x} .${x}-col9 { width: ${((100/12)*9)}%; }
-.${x} .${x}-col10 { width: ${((100/12)*10)}%; }
-.${x} .${x}-col11 { width: ${((100/12)*11)}%; }
-.${x} .${x}-col12 { width: ${((100/12)*12)}%; }
+.${r} .${x}col0 { width: ${((100/12)*0)}% }
+.${r} .${x}col1 { width: ${((100/12)*1)}%; }
+.${r} .${x}col2 { width: ${((100/12)*2)}%; }
+.${r} .${x}col3 { width: ${((100/12)*3)}%; }
+.${r} .${x}col4 { width: ${((100/12)*4)}%; }
+.${r} .${x}col5 { width: ${((100/12)*5)}%; }
+.${r} .${x}col6 { width: ${((100/12)*6)}%; }
+.${r} .${x}col7 { width: ${((100/12)*7)}%; }
+.${r} .${x}col8 { width: ${((100/12)*8)}%; }
+.${r} .${x}col9 { width: ${((100/12)*9)}%; }
+.${r} .${x}col10 { width: ${((100/12)*10)}%; }
+.${r} .${x}col11 { width: ${((100/12)*11)}%; }
+.${r} .${x}col12 { width: ${((100/12)*12)}%; }
 
 
 /*Flex*/
-.${x} .${x}-flex-row {
+.${r} .${x}flex-row {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -50,7 +50,7 @@
     -ms-flex-align: stretch;
     align-items: stretch;
 }
-.${x} .${x}-flex-m {
+.${r} .${x}flex-m {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
