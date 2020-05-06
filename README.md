@@ -18,6 +18,7 @@ Install/Update libraries.
 
 Build module and external scripts.
 
+## Compiled files
 The compiled system will be located at /app folder.
 - **/app/css:** Contains the external CSS file
 - **/app/js:** Contains the external JS file
