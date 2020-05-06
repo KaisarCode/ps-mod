@@ -27,8 +27,8 @@
 class PSMod extends Module
 {
     private $ext_ws = '';
-    private $ext_js = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod@master/app/js/script.js';
-    private $ext_css = 'https://cdn.jsdelivr.net/gh/KaisarCode/PSMod@master/app/css/style.css';
+    private $ext_js = 'https://raw.githack.com/KaisarCode/PSMod/master/app/js/script.js';
+    private $ext_css = 'https://raw.githack.com/KaisarCode/PSMod/master/app/css/style.css';
     
     // Initial API Permissions
     private $permissions = array(
