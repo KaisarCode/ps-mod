@@ -1,109 +1,109 @@
 <?CSS(?>
 
 /*Based on normalize.css*/
-.${x} {
+.${r} {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
-.${x} body { margin: 0; }
-.${x} main { display: block; }
-.${x} h1 { margin: 0.67em 0; }
-.${x} hr {
+.${r} body { margin: 0; }
+.${r} main { display: block; }
+.${r} h1 { margin: 0.67em 0; }
+.${r} hr {
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   height: 0;
   overflow: visible;
 }
-.${x} pre {
+.${r} pre {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-.${x} a {
+.${r} a {
   background-color: transparent;
 }
-.${x} abbr[title] {
+.${r} abbr[title] {
   border-bottom: none;
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
           text-decoration: underline dotted;
 }
-.${x} b,
-.${x} strong {
+.${r} b,
+.${r} strong {
   font-weight: bolder;
 }
-.${x} code,
-.${x} kbd,
-.${x} samp {
+.${r} code,
+.${r} kbd,
+.${r} samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-.${x} small {
+.${r} small {
   font-size: 0.8em;
 }
-.${x} sub,
-.${x} sup {
+.${r} sub,
+.${r} sup {
   font-size: 0.8em;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
-.${x} sub {
+.${r} sub {
   bottom: -0.25em;
 }
-.${x} sup {
+.${r} sup {
   top: -0.5em;
 }
-.${x} img {
+.${r} img {
   border-style: none;
 }
-.${x} button,
-.${x} input,
-.${x} optgroup,
-.${x} select,
-.${x} textarea {
+.${r} button,
+.${r} input,
+.${r} optgroup,
+.${r} select,
+.${r} textarea {
   font-family: inherit;
   font-size: 1em;
   line-height: 1.15;
   margin: 0;
 }
-.${x} button[disabled],
-.${x} input[disabled],
-.${x} optgroup[disabled],
-.${x} select[disabled],
-.${x} textarea[disabled] {
+.${r} button[disabled],
+.${r} input[disabled],
+.${r} optgroup[disabled],
+.${r} select[disabled],
+.${r} textarea[disabled] {
     opacity: 0.5;
 }
-.${x} button,
-.${x} input {
+.${r} button,
+.${r} input {
   overflow: visible;
 }
-.${x} button,
-.${x} select {
+.${r} button,
+.${r} select {
   text-transform: none;
 }
-.${x} button,
-.${x} [type="button"],
-.${x} [type="reset"],
-.${x} [type="submit"] {
+.${r} button,
+.${r} [type="button"],
+.${r} [type="reset"],
+.${r} [type="submit"] {
   -webkit-appearance: button;
 }
-.${x} button::-moz-focus-inner,
-.${x} [type="button"]::-moz-focus-inner,
-.${x} [type="reset"]::-moz-focus-inner,
-.${x} [type="submit"]::-moz-focus-inner {
+.${r} button::-moz-focus-inner,
+.${r} [type="button"]::-moz-focus-inner,
+.${r} [type="reset"]::-moz-focus-inner,
+.${r} [type="submit"]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
-.${x} button:-moz-focusring,
-.${x} [type="button"]:-moz-focusring,
-.${x} [type="reset"]:-moz-focusring,
-.${x} [type="submit"]:-moz-focusring {
+.${r} button:-moz-focusring,
+.${r} [type="button"]:-moz-focusring,
+.${r} [type="reset"]:-moz-focusring,
+.${r} [type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
-.${x} fieldset {
+.${r} fieldset {
   padding: 0.35em 0.75em 0.625em;
 }
-.${x} legend {
+.${r} legend {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   color: inherit;
@@ -112,125 +112,125 @@
   padding: 0;
   white-space: normal;
 }
-.${x} progress {
+.${r} progress {
   vertical-align: baseline;
 }
-.${x} textarea {
+.${r} textarea {
   overflow: auto;
 }
-.${x} [type="checkbox"],
-.${x} [type="radio"] {
+.${r} [type="checkbox"],
+.${r} [type="radio"] {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
 }
-.${x} [type="number"]::-webkit-inner-spin-button,
-.${x} [type="number"]::-webkit-outer-spin-button {
+.${r} [type="number"]::-webkit-inner-spin-button,
+.${r} [type="number"]::-webkit-outer-spin-button {
   height: auto;
 }
-.${x} [type="search"] {
+.${r} [type="search"] {
   -webkit-appearance: textfield;
   outline-offset: -2px;
 }
-.${x} [type="search"]::-webkit-search-decoration {
+.${r} [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-.${x} ::-webkit-file-upload-button {
+.${r} ::-webkit-file-upload-button {
   -webkit-appearance: button;
   font: inherit;
 }
-.${x} details {
+.${r} details {
   display: block;
 }
-.${x} summary {
+.${r} summary {
   display: list-item;
 }
-.${x} template {
+.${r} template {
   display: none;
 }
-.${x} [hidden] {
+.${r} [hidden] {
   display: none;
 }
 
 /*Custom reset*/
-.${x} {
+.${r} {
   font-family: sans-serif;
   font-size: 18px;
   color: #222222;
 }
-.${x},
-.${x} * {
+.${r},
+.${r} * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
-.${x} a {
+.${r} a {
   text-decoration: none;
   color: inherit;
 }
-.${x} ul,
-.${x} ol,
-.${x} p,
-.${x} blockquote,
-.${x} code,
-.${x} h1,
-.${x} h2,
-.${x} h3,
-.${x} h4,
-.${x} h5,
-.${x} h6 {
+.${r} ul,
+.${r} ol,
+.${r} p,
+.${r} blockquote,
+.${r} code,
+.${r} h1,
+.${r} h2,
+.${r} h3,
+.${r} h4,
+.${r} h5,
+.${r} h6 {
   margin-top: 0;
   margin-bottom: 1em;
   font-weight: normal;
 }
-.${x} h1 {
+.${r} h1 {
   font-size: 2em;
 }
-.${x} h2 {
+.${r} h2 {
   font-size: 1.8em;
 }
-.${x} h3 {
+.${r} h3 {
   font-size: 1.6em;
 }
-.${x} h4 {
+.${r} h4 {
   font-size: 1.4em;
 }
-.${x} h5 {
+.${r} h5 {
   font-size: 1.2em;
 }
-.${x} h6 {
+.${r} h6 {
   font-size: 1em;
 }
-.${x} small,
-.${x} sup,
-.${x} sub {
+.${r} small,
+.${r} sup,
+.${r} sub {
   font-size: 0.8em;
 }
-.${x} table {
+.${r} table {
   width: 100%;
   border-collapse: collapse;
 }
-.${x} th {
+.${r} th {
   font-weight: normal;
 }
-.${x} th,
-.${x} td {
+.${r} th,
+.${r} td {
   padding: 0;
   vertical-align: middle;
 }
-.${x} br {
+.${r} br {
   line-height: 1em;
 }
-.${x} hr {
+.${r} hr {
   border: 0;
   height: 1px;
   margin: 1em 0;
   background-color: #CCCCCC;
 }
-.${x} input,
-.${x} select,
-.${x} textarea,
-.${x} button {
+.${r} input,
+.${r} select,
+.${r} textarea,
+.${r} button {
   display: inline-block;
   vertical-align: middle;
   -webkit-appearance: none;
@@ -244,41 +244,41 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-.${x} input::-ms-expand,
-.${x} select::-ms-expand,
-.${x} textarea::-ms-expand,
-.${x} button::-ms-expand {
+.${r} input::-ms-expand,
+.${r} select::-ms-expand,
+.${r} textarea::-ms-expand,
+.${r} button::-ms-expand {
   display: none;
 }
-.${x} input,
-.${x} select,
-.${x} textarea,
-.${x} button,
-.${x} input:focus,
-.${x} select:focus,
-.${x} textarea:focus,
-.${x} button:focus {
+.${r} input,
+.${r} select,
+.${r} textarea,
+.${r} button,
+.${r} input:focus,
+.${r} select:focus,
+.${r} textarea:focus,
+.${r} button:focus {
   outline: none;
 }
-.${x} input,
-.${x} select,
-.${x} textarea {
+.${r} input,
+.${r} select,
+.${r} textarea {
   background-color: #FFFFFF;
 }
-.${x} select,
-.${x} button,
-.${x} input[type="submit"] {
+.${r} select,
+.${r} button,
+.${r} input[type="submit"] {
   cursor: pointer;
 }
-.${x} button,
-.${x} input[type="submit"] {
+.${r} button,
+.${r} input[type="submit"] {
   background-color: #CCCCCC;
 }
-.${x} button::-moz-focus-inner,
-.${x} a::-moz-focus-inner {
+.${r} button::-moz-focus-inner,
+.${r} a::-moz-focus-inner {
   border: 0;
 }
-.${x} label {
+.${r} label {
   display: inline-block;
 }
 <?);?>
