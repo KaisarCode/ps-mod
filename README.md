@@ -10,13 +10,15 @@ Libraries to use from KaisarCode's JSUtils.
 
 ## update.js
 ```node update```
+
 Install/Update libraries.
 
 ## build.js
 ```node build```
+
 Build module and external scripts.
 
 The compiled system will be located at /app folder.
-- /app/css: Contains the external CSS file
-- /app/js: Contains the external JS file
-- /app/mod: Contains the module's folder and its zip
+- **/app/css:** Contains the external CSS file
+- **/app/js:** Contains the external JS file
+- **/app/mod:** Contains the module's folder and its zip
