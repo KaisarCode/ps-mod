@@ -7,26 +7,21 @@ var write = fs.writeFileSync;
 var fread = fs.readFileSync;
 var wrtmd = { mode: 0o755 };
 
-var libs = [
-'dwalk',
-'fwalk',
-'fread',
-'fwrite',
-'t2js',
-'rmcomm',
-'strmin',
-'strrepl',
-'domobserve',
-];
-
+// Load libs definition
+var libjs = fread('lib.json')+'';
+libjs = JSON.parse(libjs);
+var libs = libjs.back;
+libs = libs.concat(libjs.front);
 if (!exist('lib')) mkdir('lib');
 var ldl = 0;
 var lbl = libs.length;
+
+// Load libs
 libs.forEach(function(a){
     var fl = `${a}.js`;
     var url = ''+
-    'https://cdn.jsdelivr.net'+
-    `/gh/KaisarCode/JSUtils/${fl}`;
+    'https://raw.githack.com/KaisarCode'+
+    `/JSUtils/master/${fl}`;
     https.get(url, function(res){
         var f = `lib/${fl}`;
         var c = '';

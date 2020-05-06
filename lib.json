@@ -1,0 +1,20 @@
+{
+    "back": [
+        "dwalk",
+        "fwalk",
+        "fread",
+        "fwrite",
+        "t2js",
+        "rmcomm",
+        "strmin",
+        "strrepl"
+    ],
+    "front": [
+        "is",
+        "on",
+        "wait",
+        "jreq",
+        "jpesos",
+        "domobserve"
+    ]
+}

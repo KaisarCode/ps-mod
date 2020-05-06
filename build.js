@@ -15,11 +15,7 @@ var fcopy   = fs.copyFileSync;
 var src = './src';
 var src_mod = src+'/mod';
 var src_css = src+'/css';
-var src_css_l = src_css+'/0-lib';
-var src_css_a = src_css+'/app';
 var src_js  = src+'/js';
-var src_js_l  = src_js+'/0-lib';
-var src_js_a  = src_js+'/app';
 
 var dist = './app';
 var modd = dist+'/mod';
@@ -28,11 +24,13 @@ var jsdr = dist+'/js';
 var styl = cssd+'/style.css';
 var scrp = jsdr+'/script.js';
 
+// Load libs
+lib = fread('lib.json');
+lib = JSON.parse(lib);
+
 // Load config
 var dt = new Date();
-if (!fexist('conf.json'))
-fcopy('conf.sample.json', 'conf.json');
-cfg = fread('conf.json');
+cfg = fread('mod.json');
 cfg = JSON.parse(cfg);
 
 // Build MOD
@@ -42,12 +40,7 @@ var buildMOD = require(src+'/mod');
 var buildCSS = function(cfg) {
     var str = '';
     str += `<? var x = '${cfg.name}'; ?>`;
-    // Load libraries
-    fwalk(src_css_l).forEach(function(fl) {
-        str += '<? '+fread(fl)+' ?>';
-    });
-    // Load app files
-    fwalk(src_css_a).forEach(function(fl) {
+    fwalk(src_css).forEach(function(fl) {
         str += fread(fl);
     });
     str = rmcomm(str);
@@ -73,12 +66,14 @@ function buildJS(cfg) {
         email: '${cfg.email}'
     };
     ?>`;
-    // Load libraries
-    fwalk(src_js_l).forEach(function(fl) {
-        str += '<? '+fread(fl)+' ?>';
+    
+    // Load libs
+    lib.front.forEach(function(l){
+        str += '<? '+fread('./lib/'+l+'.js')+'?>';
     });
-    // Load app files
-    fwalk(src_js_a).forEach(function(fl) {
+    
+    // Load source
+    fwalk(src_js).forEach(function(fl) {
         str += fread(fl);
     });
     str = rmcomm(str);
