@@ -54,10 +54,10 @@ var buildCSS = function(cfg) {
     str = rmcomm(str);
     str = t2js(str, true);
     eval(str);
-    css_str = '/*'+
+    CSSSTR = '/*'+
     cfg.displayName+' - '+
-    cfg.copyright+'*/\n'+css_str;
-    fwrite(styl, css_str);
+    cfg.copyright+'*/\n'+CSSSTR;
+    fwrite(styl, );
     console.log('CSS compiled.');
 }
 
@@ -76,8 +76,9 @@ function buildJS(cfg) {
     ?>`;
     
     // Load libs
-    lib.front.forEach(function(l){
-        str += '<? '+fread('./lib/'+l+'.js')+'?>';
+    lib.front.forEach(function(url){
+        var l = url.split('/').pop();
+        str += '<? '+fread('./lib/'+l)+'?>';
     });
     
     // Load source
