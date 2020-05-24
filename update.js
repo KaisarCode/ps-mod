@@ -17,12 +17,9 @@ var ldl = 0;
 var lbl = libs.length;
 
 // Load libs
-libs.forEach(function(a){
-    var fl = `${a}.js`;
-    var url = ''+
-    'https://raw.githack.com/KaisarCode'+
-    `/JSUtils/master/${fl}`;
+libs.forEach(function(url){
     https.get(url, function(res){
+        var fl = url.split('/').pop();
         var f = `lib/${fl}`;
         var c = '';
         res.on('data', function(d){

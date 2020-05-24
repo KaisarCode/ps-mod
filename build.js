@@ -42,6 +42,11 @@ var buildCSS = function(cfg) {
     str += `<?
     var r = '${cfg.name}';
     var x = '${cfg.name}-';
+    var CSSSTR = '';
+    function CSS(str) {
+        CSSSTR += str;
+        return CSSSTR;
+    };
     ?>`;
     fwalk(src_css).forEach(function(fl) {
         str += fread(fl);

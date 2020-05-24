@@ -1,20 +1,15 @@
 {
     "back": [
-        "dwalk",
-        "fwalk",
-        "fread",
-        "fwrite",
-        "t2js",
-        "rmcomm",
-        "strmin",
-        "strrepl"
+        "https://raw.githack.com/KaisarCode/JSUtils/master/dwalk/dwalk.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/fwalk/fwalk.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/fread/fread.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/fwrite/fwrite.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/t2js/t2js.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/rmcomm/rmcomm.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/strmin/strmin.js",
+        "https://raw.githack.com/KaisarCode/JSUtils/master/strrepl/strrepl.js"
     ],
     "front": [
-        "is",
-        "on",
-        "wait",
-        "jreq",
-        "jpesos",
-        "domobserve"
+        "https://raw.githack.com/KaisarCode/JSUtils/master/is/is.js"
     ]
 }
