@@ -57,7 +57,7 @@ var buildCSS = function(cfg) {
     CSSSTR = '/*'+
     cfg.displayName+' - '+
     cfg.copyright+'*/\n'+CSSSTR;
-    fwrite(styl, );
+    fwrite(styl, CSSSTR);
     console.log('CSS compiled.');
 }
 
