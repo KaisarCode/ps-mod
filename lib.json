@@ -9,7 +9,5 @@
         "https://raw.githack.com/KaisarCode/JSUtils/master/strmin/strmin.js",
         "https://raw.githack.com/KaisarCode/JSUtils/master/strrepl/strrepl.js"
     ],
-    "front": [
-        "https://raw.githack.com/KaisarCode/JSUtils/master/is/is.js"
-    ]
+    "front": []
 }
