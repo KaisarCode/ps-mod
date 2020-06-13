@@ -1,5 +1,6 @@
-## WSAfip
-Conector AFIP (Server)
+## PSMod
+Generates a WebService-oriented Prestashop module.
+The CSS and JS scripts to control it will be located externally and served through a CDN.
 
 ## mod.json
 Module definitions.
