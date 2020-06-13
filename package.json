@@ -1,0 +1,24 @@
+{
+  "name": "psmod",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Generates a WebService-oriented Prestashop module",
+  "author": "KaisarCode",
+  "main": "build.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:KaisarCode/PSMod.git"
+  },
+  "homepage": "https://github.com/KaisarCode/PSMod",
+  "dependencies": {
+    "jpesos": "^2.0.1",
+    "kc-dwalk": "^1.0.9",
+    "kc-fread": "^1.0.2",
+    "kc-fwalk": "^1.0.5",
+    "kc-fwrite": "^1.0.3",
+    "kc-rmcomm": "^1.0.2",
+    "kc-strmin": "^1.0.0",
+    "kc-strrepl": "^1.0.1",
+    "t2js": "^2.1.6"
+  }
+}

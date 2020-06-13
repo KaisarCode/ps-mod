@@ -1,129 +1,59 @@
-// Load dependencies
 var fs = require('fs');
-var dwalk   = require('./lib/dwalk');
-var fwalk   = require('./lib/fwalk');
-var fread   = require('./lib/fread');
-var fwrite  = require('./lib/fwrite');
-var t2js    = require('./lib/t2js');
-var rmcomm  = require('./lib/rmcomm');
-var strmin  = require('./lib/strmin');
-var strrepl = require('./lib/strrepl');
-var fexist  = fs.existsSync;
-var fcopy   = fs.copyFileSync;
-var dt = new Date();
+var vm = require('vm');
+var t2js = require('t2js');
+var dwalk = require('kc-dwalk');
+var fwalk = require('kc-fwalk');
+var fread = require('kc-fread');
+var fwrite = require('kc-fwrite');
+var strmin = require('kc-strmin');
+var rmcomm = require('kc-rmcomm');
 
-// Paths
-var src = './src';
-var src_mod = src+'/mod';
-var src_css = src+'/css';
-var src_js  = src+'/js';
-
-var dist = './app';
-var modd = dist+'/mod';
-var cssd = dist+'/css';
-var jsdr = dist+'/js';
-var styl = cssd+'/style.css';
-var scrp = jsdr+'/script.js';
-
-// Load libs
-var lib = fread('lib.json');
-lib = JSON.parse(lib);
-
-// Load config
-var cfg = fread('mod.json');
-cfg = JSON.parse(cfg);
-
-// Build MOD
-var buildMOD = require(src+'/mod');
+// Watch
+function watch(src, cb) {
+    var dirs = dwalk(src);
+    dirs.unshift(src);
+    dirs.forEach(function(d){
+        fs.watch(d, function(e, f){
+            if (
+            !f.match(/^\..*/g) &&
+            !f.match(/^index.php$/g)
+            ) { cb(); }
+        });
+    }); cb();
+};
 
 // Build CSS
-var buildCSS = function(cfg) {
+watch('src/css', function(){
     var str = '';
-    str += `<?
-    var r = '${cfg.name}';
-    var x = '${cfg.name}-';
-    var CSSSTR = '';
-    function CSS(str) {
-        CSSSTR += str;
-        return CSSSTR;
-    };
-    ?>`;
-    fwalk(src_css).forEach(function(fl) {
-        str += fread(fl);
+    fwalk('src/css').forEach(function(f){
+        str += fread(f);
+    });
+    str = t2js(str, {
+        mode: 'tpl'
     });
     str = rmcomm(str);
-    str = t2js(str, true);
-    eval(str);
-    CSSSTR = '/*'+
-    cfg.displayName+' - '+
-    cfg.copyright+'*/\n'+CSSSTR;
-    fwrite(styl, CSSSTR);
-    console.log('CSS compiled.');
-}
+    str = strmin(str);
+    str = vm.runInNewContext(str);
+    fwrite('app/css/style.css', str);
+    console.log('CSS Compiled');
+});
 
 // Build JS
-function buildJS(cfg) {
+watch('src/js', function(){
     var str = '';
-    str += `<?
-    var x = '${cfg.name}';
-    var cfg = {
-        name: '${cfg.displayName}',
-        description: '${cfg.description}',
-        version: '${cfg.version}',
-        author: '${cfg.author}',
-        email: '${cfg.email}'
-    };
-    ?>`;
-    
-    // Load libs
-    lib.front.forEach(function(url){
-        var l = url.split('/').pop();
-        str += '<? '+fread('./lib/'+l)+'?>';
-    });
-    
-    // Load source
-    fwalk(src_js).forEach(function(fl) {
-        str += fread(fl);
+    fwalk('src/js').forEach(function(f){
+        str += fread(f);
     });
     str = rmcomm(str);
-    str = t2js(str, true);
-    str = '(function(){ '+str+' })();';
-    str = '/*'+
-    cfg.displayName+' - '+
-    cfg.copyright+'*/\n'+str;
-    fwrite(scrp, str);
-    console.log('JS compiled.');
-}
+    str = strmin(str);
+    str = str.trim();
+    fwrite('app/js/script.js', str);
+    console.log('JS Compiled');
+});
 
-// Watch MOD
-var dirs = dwalk(src_mod);
-dirs.unshift(src_mod);
-dirs.forEach(function(d) {
-    fs.watch(d, function(e, f) {
-        if (!f.match(/^\..*/g)) {
-            buildMOD(cfg);
-        }
-    });
-}); buildMOD(cfg);
-
-// Watch CSS
-var dirs = dwalk(src_css);
-dirs.unshift(src_css);
-dirs.forEach(function(d) {
-    fs.watch(d, function(e, f) {
-        if (!f.match(/^\..*/g)) {
-            buildCSS(cfg);
-        }
-    });
-}); buildCSS(cfg);
-
-// Watch JS
-var dirs = dwalk(src_js);
-dirs.unshift(src_js);
-dirs.forEach(function(d) {
-    fs.watch(d, function(e, f) {
-        if (!f.match(/^\..*/g)) {
-            buildJS(cfg);
-        }
-    });
-}); buildJS(cfg);
+// Build MOD
+watch('src/mod', function(){
+    var opt = fread('mod.json');
+    opt = JSON.parse(opt);
+    require('./src/mod')(opt);
+});

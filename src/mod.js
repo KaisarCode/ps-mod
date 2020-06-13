@@ -1,7 +1,7 @@
 const exec  = require('child_process').execSync;
 const fs = require('fs');
-const fread = require('../lib/fread');
-const fwrite = require('../lib/fwrite');
+const fread = require('kc-fread');
+const fwrite = require('kc-fwrite');
 const def = function(v) {
 return typeof v !== 'undefined'; }
 const mkdir = fs.mkdirSync;

@@ -1,4 +1,3 @@
-<?
 // Create submenu in modules
 jQuery(document).ready(function(){
     
@@ -8,9 +7,8 @@ jQuery(document).ready(function(){
     #collapse-43\
     ').append('\
     <li class="link-leveltwo">\
-        <a class="link" href="{$mod->url_conf|escape:'htmlall':'UTF-8'}">{$mod->displayName|escape:'htmlall':'UTF-8'}</a>\
+        <a class="link" href="">PSMod</a>\
     </li>\
     ');
     
 });
-?>

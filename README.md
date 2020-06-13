@@ -5,16 +5,6 @@ The CSS and JS scripts to control it will be located externally and served throu
 ## mod.json
 Module definitions.
 
-## lib.json
-Libraries to use from KaisarCode's JSUtils.
-
-https://github.com/KaisarCode/JSUtils.
-
-## update.js
-```node update```
-
-Install/Update libraries.
-
 ## build.js
 ```node build```
 

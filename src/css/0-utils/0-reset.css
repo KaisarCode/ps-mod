@@ -1,5 +1,3 @@
-<?CSS(?>
-
 /*Based on normalize.css*/
 .${r} {
   line-height: 1.15;
@@ -72,6 +70,7 @@
 .${r} select[disabled],
 .${r} textarea[disabled] {
     opacity: 0.5;
+    cursor: default!important;
 }
 .${r} button,
 .${r} input {
@@ -281,4 +280,3 @@
 .${r} label {
   display: inline-block;
 }
-<?);?>
