@@ -152,7 +152,6 @@ class PSMod extends Module
     }
     
     // SYSTEM-LEVEL METHODS ////////////////////////////////////////////
-    // (Do not edit) ///////////////////////////////////////////////////
     
     // REGISTER HOOK
     private function regHook($hook)
