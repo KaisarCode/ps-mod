@@ -1,8 +1,8 @@
 {
-  "name": "psmod",
+  "name": "ps-mod",
   "version": "1.0.0",
   "private": true,
-  "description": "Generates a WebService-oriented Prestashop module",
+  "description": "[php] Generates a WebService-oriented Prestashop module.",
   "author": "KaisarCode",
   "main": "build.js",
   "repository": {
