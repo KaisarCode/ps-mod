@@ -1,5 +1,5 @@
-const exec  = require('child_process').execSync;
 const fs = require('fs');
+const exec = require('child_process').execSync;
 const fread = require('kc-fread');
 const fwrite = require('kc-fwrite');
 const def = function(v) {
