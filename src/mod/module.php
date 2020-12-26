@@ -94,10 +94,7 @@ class {{CLASSNAME}} extends Module
         if ($this->ext_ws) {
             $url = $this->ext_ws;
             $pth = 'ps-product-update';
-            $dta = new stdClass();
-            $dta->a = $pth;
-            $dta->dta = $params;
-            $params->a = $pth;
+            $dta = $params;
             $this->ping('POST', "$url/$pth", $dta);
         }
     }
@@ -110,10 +107,7 @@ class {{CLASSNAME}} extends Module
         if ($this->ext_ws) {
             $url = $this->ext_ws;
             $pth = 'ps-quantity-update';
-            $dta = new stdClass();
-            $dta->a = $pth;
-            $dta->dta = $params;
-            $params->a = $pth;
+            $dta = $params;
             $this->ping('POST', "$url/$pth", $dta);
         }
     }
@@ -126,10 +120,7 @@ class {{CLASSNAME}} extends Module
         if ($this->ext_ws) {
             $url = $this->ext_ws;
             $pth = 'ps-product-delete';
-            $dta = new stdClass();
-            $dta->a = $pth;
-            $dta->dta = $params;
-            $params->a = $pth;
+            $dta = $params;
             $this->ping('POST', "$url/$pth", $dta);
         }
     }
@@ -142,10 +133,7 @@ class {{CLASSNAME}} extends Module
         if ($this->ext_ws) {
             $url = $this->ext_ws;
             $pth = 'ps-order-validate';
-            $dta = new stdClass();
-            $dta->a = $pth;
-            $dta->dta = $params;
-            $params->a = $pth;
+            $dta = $params;
             $this->ping('POST', "$url/$pth", $dta);
         }
     }
@@ -158,14 +146,10 @@ class {{CLASSNAME}} extends Module
         if ($this->ext_ws) {
             $url = $this->ext_ws;
             $pth = 'ps-order-status-update';
-            $dta = new stdClass();
-            $dta->a = $pth;
-            $dta->dta = $params;
-            $params->a = $pth;
+            $dta = $params;
             $this->ping('POST', "$url/$pth", $dta);
         }
     }
-    
     
     // SYSTEM-LEVEL METHODS ////////////////////////////////////////////
     // (Do not edit) ///////////////////////////////////////////////////

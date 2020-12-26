@@ -44,12 +44,12 @@ if (f.match(/\.css$/g)) {
     buildCSS();
 }});buildCSS();
 
-watch('src/js', function(){
+watch('src/js', function(d,f){
 if (f.match(/\.js$/g)) {
     buildJS();
 }});buildJS();
 
-watch('src/mod', function(){
+watch('src/mod', function(d,f){
 if (f.match(/\.php$/g)) {
     buildMOD();
 }});buildMOD();
