@@ -1,10 +1,12 @@
 const fs = require('fs');
 const exec = require('child_process').execSync;
+const fwalk = require('kc-fwalk');
 const fread = require('kc-fread');
 const fwrite = require('kc-fwrite');
+const deldir = require('kc-ddel');
 const def = function(v) {
 return typeof v !== 'undefined'; }
-const mkdir = fs.mkdirSync;
+const mkdir = require('kc-mkdir');
 const filex = fs.existsSync;
 const copy = fs.copyFileSync;
 
@@ -66,6 +68,20 @@ module.exports = function(opt) {
     // Install logo
     if (!filex(dir+'/logo.png')) {
         copy(__dirname+'/mod/logo.png', dir+'/logo.png');
+    }
+    
+    // Install translations
+    var dtra = dir+'/translations';
+    var dtrs = __dirname+'/mod/translations';
+    deldir(dtra);
+    if (filex(dtrs)) {
+        fwalk(dtrs).forEach(function(fl){
+            var f = fl.split('/').pop();
+            var str = fread(fl);
+            str = replTags(str);
+            mkdir(dtra);
+            fwrite(dtra+'/'+f, str);
+        });
     }
     
     // Zip module
