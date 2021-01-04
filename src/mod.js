@@ -1,5 +1,6 @@
 const fs = require('fs');
-const exec = require('child_process').execSync;
+const exec =
+require('child_process').execSync;
 const fwalk = require('kc-fwalk');
 const fread = require('kc-fread');
 const fwrite = require('kc-fwrite');
@@ -27,7 +28,6 @@ module.exports = function(opt) {
     if (!def(opt.email)) opt.email = 'author@email.com';
     if (!def(opt.copyright)) opt.copyright = yr+' '+opt.author;
     
-    if (!def(opt.dir)) opt.dir = 'dist/mod';
     if (!def(opt.ext_css)) opt.ext_css = '';
     if (!def(opt.ext_js)) opt.ext_js = '';
     
@@ -35,6 +35,7 @@ module.exports = function(opt) {
     function replTags(str = '') {
         str = str.replace(/{{NAME}}/gi, opt.name);
         str = str.replace(/{{CLASSNAME}}/gi, opt.className);
+        str = str.replace(/{{CLASSUPPR}}/gi, opt.className.toUpperCase());
         str = str.replace(/{{DISPLAYNAME}}/gi, opt.displayName);
         str = str.replace(/{{DESCRIPTION}}/gi, opt.description);
         str = str.replace(/{{TAB}}/gi, opt.tab);
@@ -49,10 +50,10 @@ module.exports = function(opt) {
     }
     
     // Create root dir
-    if (!filex(opt.dir)) mkdir(opt.dir);
+    if (!filex('app/mod')) mkdir('app/mod');
 
     // Create module dir
-    var dir = opt.dir+'/'+opt.name;
+    var dir = 'app/mod/'+opt.name;
     if (!filex(dir)) mkdir(dir);
     
     // Install index.php
@@ -70,75 +71,8 @@ module.exports = function(opt) {
         copy(__dirname+'/mod/logo.png', dir+'/logo.png');
     }
     
-    // Install translations
-    var dtra = dir+'/translations';
-    var dtrs = __dirname+'/mod/translations';
-    deldir(dtra);
-    if (filex(dtrs)) {
-        fwalk(dtrs).forEach(function(fl){
-            var f = fl.split('/').pop();
-            var str = fread(fl);
-            str = replTags(str);
-            mkdir(dtra);
-            fwrite(dtra+'/'+f, str);
-        });
-    }
-    
-    // Install views
-    var dview = dir+'/views';
-    var dvw = __dirname+'/mod/views';
-    deldir(dview);
-    if (filex(dvw)) {
-        fwalk(dvw).forEach(function(fl){
-            var f = fl.split('/').pop();
-            var str = fread(fl);
-            str = replTags(str);
-            mkdir(dview);
-            fwrite(dview+'/'+f, str);
-        });
-    }
-    
-    // Install CSS
-    var dcss = dir+'/views/css';
-    var dcs = __dirname+'/mod/views/css';
-    if (filex(dcs)) {
-        fwalk(dcs).forEach(function(fl){
-            var f = fl.split('/').pop();
-            var str = fread(fl);
-            str = replTags(str);
-            mkdir(dcss);
-            fwrite(dcss+'/'+f, str);
-        });
-    }
-    
-    // Install JS
-    var djs = dir+'/views/js';
-    var dj = __dirname+'/mod/views/js';
-    if (filex(dj)) {
-        fwalk(dj).forEach(function(fl){
-            var f = fl.split('/').pop();
-            var str = fread(fl);
-            str = replTags(str);
-            mkdir(djs);
-            fwrite(djs+'/'+f, str);
-        });
-    }
-    
-    // Install TPLs
-    var tpls = dir+'/views/templates';
-    var tpl = __dirname+'/mod/views/templates';
-    if (filex(tpl)) {
-        fwalk(tpl).forEach(function(fl){
-            var f = fl.split('/').pop();
-            var str = fread(fl);
-            str = replTags(str);
-            mkdir(tpls);
-            fwrite(tpls+'/'+f, str);
-        });
-    }
-    
     // Zip module
-    exec(`cd ${opt.dir} && zip -r ${opt.name}.zip ${opt.name}`);
+    exec(`cd app/mod && zip -r ${opt.name}.zip ${opt.name}`);
     
     // Notify
     console.log('MOD compiled.');

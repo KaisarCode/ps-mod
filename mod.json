@@ -1,5 +1,4 @@
 {
-    "dir": "app/mod",
     "name": "psmod",
     "className": "PSMod",
     "displayName": "PS Mod",
@@ -9,7 +8,7 @@
     "author": "KaisarCode",
     "email": "kaisar@kaisarcode.com",
     "copyright": "2020 KaisarCode",
-    "ext_css": "https://raw.githack.com/KaisarCode/PSMod/master/app/css/style.css",
-    "ext_js": "https://raw.githack.com/KaisarCode/PSMod/master/app/js/script.js",
+    "ext_css": "",
+    "ext_js": "",
     "ext_ws": ""
 }

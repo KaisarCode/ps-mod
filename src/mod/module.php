@@ -39,7 +39,6 @@ class {{CLASSNAME}} extends Module
     public function __construct()
     {
         $this->name = '{{NAME}}';
-        $this->name_upper = strtoupper($this->name);
         $this->displayName = $this->l('{{DISPLAYNAME}}');
         $this->description = $this->l('{{DESCRIPTION}}');
         $this->tab = '{{TAB}}';
@@ -89,13 +88,17 @@ class {{CLASSNAME}} extends Module
         
         // Pass data to js
         $lang = Context::getContext()->language->iso_code;
-        $tokn = Tools::getAdminTokenLite('AdminModules');
+        $urlc = '';
+        $urlc.= 'index.php?controller=AdminModules';
+        $urlc.= '&configure='.$this->name;
+        $urlc.= '&token='.Tools::getAdminTokenLite('AdminModules');
+        $urlc.= '&tab_module='.$this->tab.'&module_name='.$this->name;
         return "<script>
-        var {$this->name_upper}_NAME = '{$this->name}';
-        var {$this->name_upper}_DNAM = '{$this->displayName}';
-        var {$this->name_upper}_VERS = '{$this->ps_version}';
-        var {$this->name_upper}_LANG = '{$lang}';
-        var {$this->name_upper}_TOKN = '{$tokn}';
+        var {{CLASSUPPR}}_NAME = '{$this->name}';
+        var {{CLASSUPPR}}_DNAM = '{$this->displayName}';
+        var {{CLASSUPPR}}_VERS = '{$this->ps_version}';
+        var {{CLASSUPPR}}_LANG = '{$lang}';
+        var {{CLASSUPPR}}_URLC = '{$urlc}';
         </script>";
     }
     

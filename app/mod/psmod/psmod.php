@@ -27,8 +27,8 @@
 class PSMod extends Module
 {
     private $ext_ws = '';
-    private $ext_js = 'https://raw.githack.com/KaisarCode/PSMod/master/app/js/script.js';
-    private $ext_css = 'https://raw.githack.com/KaisarCode/PSMod/master/app/css/style.css';
+    private $ext_js = '';
+    private $ext_css = '';
     
     // Initial API Permissions
     private $permissions = array(
@@ -39,7 +39,6 @@ class PSMod extends Module
     public function __construct()
     {
         $this->name = 'psmod';
-        $this->name_upper = strtoupper($this->name);
         $this->displayName = $this->l('PS Mod');
         $this->description = $this->l('PrestaShop module');
         $this->tab = 'others';
@@ -89,13 +88,17 @@ class PSMod extends Module
         
         // Pass data to js
         $lang = Context::getContext()->language->iso_code;
-        $tokn = Tools::getAdminTokenLite('AdminModules');
+        $urlc = '';
+        $urlc.= 'index.php?controller=AdminModules';
+        $urlc.= '&configure='.$this->name;
+        $urlc.= '&token='.Tools::getAdminTokenLite('AdminModules');
+        $urlc.= '&tab_module='.$this->tab.'&module_name='.$this->name;
         return "<script>
-        var {$this->name_upper}_NAME = '{$this->name}';
-        var {$this->name_upper}_DNAM = '{$this->displayName}';
-        var {$this->name_upper}_VERS = '{$this->ps_version}';
-        var {$this->name_upper}_LANG = '{$lang}';
-        var {$this->name_upper}_TOKN = '{$tokn}';
+        var PSMOD_NAME = '{$this->name}';
+        var PSMOD_DNAM = '{$this->displayName}';
+        var PSMOD_VERS = '{$this->ps_version}';
+        var PSMOD_LANG = '{$lang}';
+        var PSMOD_URLC = '{$urlc}';
         </script>";
     }
     
