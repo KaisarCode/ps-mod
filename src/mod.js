@@ -84,6 +84,59 @@ module.exports = function(opt) {
         });
     }
     
+    // Install views
+    var dview = dir+'/views';
+    var dvw = __dirname+'/mod/views';
+    deldir(dview);
+    if (filex(dvw)) {
+        fwalk(dvw).forEach(function(fl){
+            var f = fl.split('/').pop();
+            var str = fread(fl);
+            str = replTags(str);
+            mkdir(dview);
+            fwrite(dview+'/'+f, str);
+        });
+    }
+    
+    // Install CSS
+    var dcss = dir+'/views/css';
+    var dcs = __dirname+'/mod/views/css';
+    if (filex(dcs)) {
+        fwalk(dcs).forEach(function(fl){
+            var f = fl.split('/').pop();
+            var str = fread(fl);
+            str = replTags(str);
+            mkdir(dcss);
+            fwrite(dcss+'/'+f, str);
+        });
+    }
+    
+    // Install JS
+    var djs = dir+'/views/js';
+    var dj = __dirname+'/mod/views/js';
+    if (filex(dj)) {
+        fwalk(dj).forEach(function(fl){
+            var f = fl.split('/').pop();
+            var str = fread(fl);
+            str = replTags(str);
+            mkdir(djs);
+            fwrite(djs+'/'+f, str);
+        });
+    }
+    
+    // Install TPLs
+    var tpls = dir+'/views/templates';
+    var tpl = __dirname+'/mod/views/templates';
+    if (filex(tpl)) {
+        fwalk(tpl).forEach(function(fl){
+            var f = fl.split('/').pop();
+            var str = fread(fl);
+            str = replTags(str);
+            mkdir(tpls);
+            fwrite(tpls+'/'+f, str);
+        });
+    }
+    
     // Zip module
     exec(`cd ${opt.dir} && zip -r ${opt.name}.zip ${opt.name}`);
     

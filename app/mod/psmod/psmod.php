@@ -39,6 +39,7 @@ class PSMod extends Module
     public function __construct()
     {
         $this->name = 'psmod';
+        $this->name_upper = strtoupper($this->name);
         $this->displayName = $this->l('PS Mod');
         $this->description = $this->l('PrestaShop module');
         $this->tab = 'others';
@@ -51,6 +52,10 @@ class PSMod extends Module
         $this->ps_version = Configuration::get('PS_VERSION_DB');
         $this->ps_version = explode('.', $this->ps_version);
         $this->ps_version = $this->ps_version[0].$this->ps_version[1];
+        $this->ps_versions_compliancy = array(
+            'min' => '1.6',
+            'max' => _PS_VERSION_
+        );
         
         parent::__construct();
     }
@@ -69,14 +74,29 @@ class PSMod extends Module
     //HEADER
     public function hookDisplayBackOfficeHeader($params)
     {
-        // Init API
+        // Init api
         $this->initAPI();
+        
+        // Call css
         if ($this->ext_css) {
             $this->context->controller->addCSS($this->ext_css);
         }
+        
+        // Call js
         if ($this->ext_js) {
             $this->context->controller->addJS($this->ext_js);
         }
+        
+        // Pass data to js
+        $lang = Context::getContext()->language->iso_code;
+        $tokn = Tools::getAdminTokenLite('AdminModules');
+        return "<script>
+        var {$this->name_upper}_NAME = '{$this->name}';
+        var {$this->name_upper}_DNAM = '{$this->displayName}';
+        var {$this->name_upper}_VERS = '{$this->ps_version}';
+        var {$this->name_upper}_LANG = '{$lang}';
+        var {$this->name_upper}_TOKN = '{$tokn}';
+        </script>";
     }
     
     // CONFIG PAGE
