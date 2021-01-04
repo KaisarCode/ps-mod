@@ -1,6 +1,7 @@
 ## PSMod
 Generates a WebService-oriented Prestashop module.
-The CSS and JS scripts to control it will be located externally and served through a CDN.
+The CSS and JS scripts to control it can be loaded from a CDN
+or from the module's view folder.
 
 ## mod.json
 Module definitions.
