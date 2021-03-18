@@ -1,4 +1,4 @@
-## PSMod
+## PSMod WS
 Generates a WebService-oriented Prestashop module.
 The CSS and JS scripts to control it can be loaded from a CDN
 or from the module's view folder.
